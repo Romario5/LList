@@ -1,0 +1,33 @@
+{
+  "name": "llist",
+  "version": "1.0.0",
+  "description": "Linked list implementation on JS",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "uglifyjs src/index.js -o dist/llist.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Romario5/LList.git"
+  },
+  "keywords": [
+    "list",
+    "linked",
+    "structure",
+    "data",
+    "type",
+    "linked",
+    "list",
+    "data",
+    "structure"
+  ],
+  "author": "Roman Muravchuk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Romario5/LList/issues"
+  },
+  "homepage": "https://github.com/Romario5/LList#readme",
+  "devDependencies": {
+    "uglifyjs": "^2.4.10"
+  }
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>LList test</title>
+	</head>
+	<body>
+		<div id="log"></div>
+		<script src="../dist/llist.min.js"></script>
+		<script>
+
+		function log(text){
+			if(typeof text !== 'string') text = text.toString();
+			var record = document.createElement('pre');
+			record.className = 'log-record';
+			record.innerHTML = text;
+			document.getElementById('log').appendChild(record);
+		}
+
+		var arr_1 = new LList();
+
+		arr_1.push(2);
+		arr_1.push(3);
+		arr_1.unshift(1);
+
+		log(arr_1.data(1));
+		log(arr_1.asArray());
+		log(arr_1.map(function(data){return data*2;}).asArray());
+
+		</script>
+	</body>
+</html>
