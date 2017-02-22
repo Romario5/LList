@@ -18,6 +18,7 @@ function LLItem(data)
 	this.next = null;
 	this.prev = null;
 	this.data = data === undefined ? null : data;
+	this.list = null;
 }
 
 
@@ -29,6 +30,7 @@ function LLItem(data)
 LList.prototype.push = function(data)
 {
 	var newItem = new LLItem(data);
+	newItem.list = this;
 	this.length++;
 
 	if(this.first === null){
@@ -52,6 +54,7 @@ LList.prototype.push = function(data)
 LList.prototype.unshift = function(data)
 {
 	var newItem = new LLItem(data);
+	newItem.list = this;
 	this.length++;
 
 	if(this.first === null){
@@ -228,6 +231,34 @@ LList.prototype.withEach = function(func)
 };
 
 
+
+/**
+* Deletes item from the list.
+* @returns {Integer} - New length of the list.
+*/
+LLItem.prototype.delete = function()
+{
+	if(this.prev !== null) this.prev.next = this.next;
+	if(this.next !== null) this.next.prev = this.prev;
+	if(this.list.first === this) this.list.first = this.next;
+	if(this.list.last === this) this.list.last = this.prev;
+	delete this.next;
+	delete this.prev;
+	return --this.list.length;
+};
+
+
+/**
+* Deletes item with specified index from the list.
+* @param index {Integer}
+* @returns {Integer} - New length of the list.
+*/
+LList.prototype.delete = function(index)
+{
+	var item = this.item(index);
+	if(item !== null) item.delete();
+	return this.length;
+};
 
 
 if(typeof module !== 'undefined') module.exports = LList;

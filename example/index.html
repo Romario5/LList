@@ -22,9 +22,21 @@
 		arr_1.push(3);
 		arr_1.unshift(1);
 
-		log(arr_1.data(1));
-		log(arr_1.asArray());
-		log(arr_1.map(function(data){return data*2;}).asArray());
+
+		log('As array: ' + arr_1.asArray());
+		log('Length: ' + arr_1.length);
+
+		log('Item to delete: ' + arr_1.data(1));
+		arr_1.item(1).delete();	// Delete second item.
+
+		log('After deleting second item: ' + arr_1.asArray());
+
+		log('New length: ' + arr_1.length);
+		
+		log('After mapping (*2): ' + arr_1.map(function(data){return data*2;}).asArray());
+
+
+		log('Enjoy, my dear!=)');
 
 		</script>
 	</body>
