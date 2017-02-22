@@ -4,14 +4,18 @@ Linked list implementation on JS.
 ###List's methods
 Method | Description
 ------------ | -------------
-`push(data)` | pushes new item into the end of a list.
-`unshift(data)` | inserts new item into the start of a list.
-`pop()` | deletes last item from a list. Returns new length of a list.
-`shift()` | deletes first item from a list. Returns new length of a list.
-`asArray()` | returns array with list items in order they was added.
-`delete(index)` | deletes element from the list with specified index.
-`map(func)` | executes function `func` for each list item. Arguments of the function: *data*, *index*, *list*. *this* - list item. 
-`withEach(func)` | works similar with `map()`, but changes initial data and returns initial LList.
+`push(data)` | Pushes new item into the end of a list.
+`unshift(data)` | Inserts new item into the start of a list.
+`pop()` | Deletes last item from a list. Returns new length of a list.
+`shift()` | Deletes first item from a list. Returns new length of a list.
+`asArray()` | Returns array with list items in order they was added.
+`delete(index)` | Deletes element from the list with specified index.
+`map(func)` | Executes function `func` for each list item. Arguments of the function: *data*, *index*, *list*. *this* - list item. 
+`withEach(func)` | Works similar with `map()`, but changes initial data and returns initial LList if returned value is not undefined.
+`data(index)` | Returns data of the item with specified index.
+`item(index)` | Returns item with specified index.
+`indexOf(data)` | Returns index (beginning from zero) of the item with the specified data.
+`has(data)` | Returns *true* if item with specified data exists in the list. Otherwise returns *false*.
 ###List item's methods
 Method | Description
 ------------ | -------------

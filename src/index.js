@@ -128,10 +128,9 @@ LList.prototype.item = function(index)
 	if(this.first === null) return null;
 	if(index > this.length || this.length === 1) return this.last;
 
-
 	var i, item;
-
-	if(index < 0){
+	// Search from the end if negative index given.
+	if(index < 0){	
 		i = 1;
 		var absIndex = Math.abs(index);
 		item = this.last;
@@ -141,7 +140,8 @@ LList.prototype.item = function(index)
 			i++;
 		}
 
-	}else if(index < this.length/2){
+	// Search from the start if index less then half of total quantity.	
+	}else if(index < this.length/2){	
 		i = 0;
 		item = this.first;
 		while(item !== null){
@@ -150,6 +150,7 @@ LList.prototype.item = function(index)
 			i++;
 		}
 
+	// Otherwise search from the end.
 	}else{
 		i = this.length - 1;
 		item = this.last;
@@ -159,8 +160,10 @@ LList.prototype.item = function(index)
 			i--;
 		}
 	}
-	return null;
+	
+	return null;	// Return null if nothing found.
 };
+
 
 
 /**
@@ -206,7 +209,7 @@ LList.prototype.map = function(func)
 
 /**
 * Applies function to each item data of the list and returns itself.
-* This function changes initial values.
+* This function changes initial values if callback returns some value excluding undefined.
 * @param func {Function} - Function that will be executed for each item data.
 * 		Arguments: 
 *		 	data  - current item's data
@@ -217,13 +220,14 @@ LList.prototype.map = function(func)
 */
 LList.prototype.withEach = function(func)
 {
-	var index = 0, item = this.first;
+	var index = 0, item = this.first, result;
 	if(typeof func !== 'function') {
 		console.warn('LList.withEach: Function is required as argument, but ' + (typeof func) + ' is given.');
 		return this;
 	}
 	while(item !== null){
-		item.data = func.call(item, item.data, index, this);
+		result = func.call(item, item.data, index, this)
+		if(result !== undefined) item.data = result;
 		item = item.next;
 		index++;
 	}
@@ -248,6 +252,7 @@ LLItem.prototype.delete = function()
 };
 
 
+
 /**
 * Deletes item with specified index from the list.
 * @param index {Integer}
@@ -259,6 +264,39 @@ LList.prototype.delete = function(index)
 	if(item !== null) item.delete();
 	return this.length;
 };
+
+
+
+/**
+* Searches for item with specified data.
+* @param data Data to search.
+* @returns {Integer} Negative value returned if item is not found.
+*/
+LList.prototype.indexOf = function(data)
+{
+		var item = this.first, index = 0;
+		while(item !== null){
+			if(item.data === data) return index;
+			item = item.next;
+			index++;
+		}
+		return -1;
+};
+
+
+
+/**
+* Checks if item with specified data exists in the list.
+* @param data Data to search.
+* @returns {Boolean}
+*/
+LList.prototype.has = function(data)
+{
+	return this.indexOf(data) >= 0;
+};
+
+
+
 
 
 if(typeof module !== 'undefined') module.exports = LList;
