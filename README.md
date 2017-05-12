@@ -1,7 +1,7 @@
 # LList
 Linked list implementation on JS.
 
-#List's methods
+# List's methods
 Method | Description
 ------------ | -------------
 `push(data)` | Pushes new item into the end of a list.
@@ -21,7 +21,7 @@ Method | Description
 ------------ | -------------
 `delete()` | deletes item from the list. Returns new length of a list.
 
-#Usage
+# Usage
 ```javascript
 var arr_1 = new LList();        // Create new linked list.
 arr_1.push(2);                  // Add item with data 2 into end of the list.
