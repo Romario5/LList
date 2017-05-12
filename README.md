@@ -16,7 +16,7 @@ Method | Description
 `item(index)` | Returns item with specified index.
 `indexOf(data)` | Returns index (beginning from zero) of the item with the specified data.
 `has(data)` | Returns *true* if item with specified data exists in the list. Otherwise returns *false*.
-###List item's methods
+# List item's methods
 Method | Description
 ------------ | -------------
 `delete()` | deletes item from the list. Returns new length of a list.
